@@ -1,0 +1,22 @@
+{
+  "info": { "name": "Student Management API", "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json" },
+  "variable": [ { "key": "baseUrl", "value": "http://localhost:3000" }, { "key": "studentId", "value": "1" } ],
+  "item": [
+    { "name": "Create student", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }],
+      "body": { "mode": "raw", "raw": "{\n  \"name\": \"Priya Sharma\",\n  \"email\": \"priya@univ.edu\",\n  \"age\": 22,\n  \"course\": \"Mechanical\",\n  \"department\": \"Engineering\"\n}" },
+      "url": "{{baseUrl}}/api/students" } },
+    { "name": "Get all students", "request": { "method": "GET", "url": "{{baseUrl}}/api/students" } },
+    { "name": "Filter by course", "request": { "method": "GET", "url": "{{baseUrl}}/api/students?course=Electronics" } },
+    { "name": "Get student by id", "request": { "method": "GET", "url": "{{baseUrl}}/api/students/{{studentId}}" } },
+    { "name": "Update student (PUT)", "request": { "method": "PUT", "header": [{ "key": "Content-Type", "value": "application/json" }],
+      "body": { "mode": "raw", "raw": "{\n  \"name\": \"Asha Reddy\",\n  \"email\": \"asha@univ.edu\",\n  \"age\": 21,\n  \"course\": \"Data Science\",\n  \"department\": \"Engineering\"\n}" },
+      "url": "{{baseUrl}}/api/students/{{studentId}}" } },
+    { "name": "Partial update (PATCH)", "request": { "method": "PATCH", "header": [{ "key": "Content-Type", "value": "application/json" }],
+      "body": { "mode": "raw", "raw": "{ \"age\": 23 }" },
+      "url": "{{baseUrl}}/api/students/{{studentId}}" } },
+    { "name": "Delete student", "request": { "method": "DELETE", "url": "{{baseUrl}}/api/students/{{studentId}}" } },
+    { "name": "Invalid data (expect 400)", "request": { "method": "POST", "header": [{ "key": "Content-Type", "value": "application/json" }],
+      "body": { "mode": "raw", "raw": "{ \"name\": \"\", \"email\": \"bad\", \"age\": 5 }" },
+      "url": "{{baseUrl}}/api/students" } }
+  ]
+}
